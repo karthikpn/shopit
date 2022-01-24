@@ -1,0 +1,17 @@
+.product__item {
+  max-width: 25vw;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 0.5rem;
+}
+.product__item__image {
+  object-fit: contain;
+  width: 100%;
+
+  margin-bottom: 1vh;
+}
+.product__item__details {
+  margin-top: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

@@ -1,0 +1,13 @@
+.home {
+  margin-top: 9vh;
+}
+.home__products {
+  display: grid;
+  margin-left: 3vw;
+  padding: 1rem;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 60vh;
+  row-gap: 4vh;
+  text-align: center;
+}

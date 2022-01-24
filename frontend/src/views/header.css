@@ -1,0 +1,35 @@
+.header {
+  min-width: 100vw;
+  position: fixed;
+  min-height: 8vh;
+  max-height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #152238;
+  color: white;
+}
+.header__brand__link {
+  text-decoration: none;
+  color: white;
+}
+.header__search {
+  min-width: 40vw;
+  padding: 1vh;
+  outline: none;
+  border: 1px solid;
+}
+.header__options {
+  min-width: 20vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header__options__cart {
+  text-decoration: none;
+  color: white;
+}
+.header__options__profile {
+  text-decoration: none;
+  color: white;
+}
