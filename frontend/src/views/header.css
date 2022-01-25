@@ -1,6 +1,6 @@
 .header {
   min-width: 100vw;
-  position: fixed;
+  position: sticky;
   min-height: 8vh;
   max-height: 8vh;
   display: flex;
@@ -27,9 +27,19 @@
 }
 .header__options__cart {
   text-decoration: none;
-  color: white;
+  color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .header__options__profile {
   text-decoration: none;
+  color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header__options__cart:hover,
+.header__options__profile:hover {
   color: white;
 }

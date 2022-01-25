@@ -2,6 +2,7 @@
   max-width: 25vw;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 0.5rem;
+  padding: 0.5rem;
 }
 .product__item__image {
   object-fit: contain;

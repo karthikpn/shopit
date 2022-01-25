@@ -13,9 +13,11 @@ const Header = () => {
       <input type="text" className="header__search" />
       <div className="header__options">
         <Link to="/cart" className="header__options__cart">
+          <i class="fas fa-shopping-cart" style={{ marginRight: "0.5vw" }}></i>
           <span>Cart</span>
         </Link>
         <Link to="/profile" className="header__options__profile">
+          <i class="fas fa-user" style={{ marginRight: "0.5vw" }}></i>
           <span>Profile</span>
         </Link>
       </div>
