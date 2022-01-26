@@ -7,7 +7,7 @@ const Header = () => {
     <div className="header">
       <div className="header__brand">
         <Link to="/" className="header__brand__link">
-          <h2>Brand</h2>
+          <h2>ShopIt</h2>
         </Link>
       </div>
       <input type="text" className="header__search" />
