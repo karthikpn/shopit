@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { productDetailsAction } from "../actions/productActions";
 import Loader from "../Components/Loader";
 import Message from "../Components/Message";
-
+import { useNavigate } from "react-router-dom";
 const ProductScreen = () => {
+  let navigate = useNavigate();
   const params = useParams();
-
-  console.log(params);
+  const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   const { loading, error, product } = useSelector(
     (state) => state.productDetails
@@ -20,7 +20,7 @@ const ProductScreen = () => {
   }, [dispatch]);
 
   const handleAddtoCart = () => {
-    console.log("clicked");
+    navigate(`/cart/${params.id}?qty=${qty}`);
   };
 
   return (
@@ -66,11 +66,28 @@ const ProductScreen = () => {
                 )}
               </span>
             </div>
+            {product.countInStock > 0 && (
+              <div className="productScreen__details__qty">
+                <span>Qty : </span>
+                <select
+                  id="qty"
+                  name="qty"
+                  value={qty}
+                  onChange={(e) => setQty(e.target.value)}
+                >
+                  {[...Array(product.countInStock).keys()].map((x) => (
+                    <option key={x + 1} value={x + 1}>
+                      {x + 1}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
             {product.countInStock > 0 ? (
               <div className="productScreen__details__price__details__cart">
                 <button
                   className="productScreen__details__price__details__toCart"
-                  onClick={handleAddtoCart()}
+                  onClick={handleAddtoCart}
                 >
                   Add to Cart
                 </button>
