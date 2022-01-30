@@ -9,12 +9,13 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const products = await Product.find({});
+
     res.send(products);
   })
 );
 
 // @desc : Fetch single Product
-// @route : GET /api/product/:id
+// @route : GET /api/products/:id
 router.get(
   "/:id",
   asyncHandler(async (req, res) => {
