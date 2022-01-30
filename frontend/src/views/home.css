@@ -1,13 +1,30 @@
 .home {
   margin-top: 9vh;
+  width: 98vw;
 }
 .home__products {
   display: grid;
   margin-left: 3vw;
-  padding: 1rem;
 
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 60vh;
+  column-gap: 2vw;
+  grid-template-rows: 1fr 1fr;
   row-gap: 4vh;
   text-align: center;
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .home {
+    width: 100vw;
+  }
+  .home__products {
+    display: grid;
+    margin-left: 3vw;
+    padding: 1rem;
+    width: 100vw;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60vh;
+    row-gap: 4vh;
+    text-align: center;
+  }
 }

@@ -31,10 +31,10 @@
 .productScreen__details__subDetails > h2 {
   font-family: "Dongle", sans-serif;
   font-size: 2rem;
-  width: 15vw;
+
   line-height: 2rem;
   overflow: hidden;
-  padding-bottom: 5vh;
+  padding-bottom: 2vh;
   border-bottom: 1px solid lightgray;
 }
 .productScreen__details__subDetails__rating {
@@ -54,7 +54,7 @@
 }
 .productScreen__details__price__details {
   display: flex;
-  width: 15vw;
+
   border: 1px solid lightgray;
 
   align-items: center;
@@ -63,7 +63,7 @@
 }
 .productScreen__details__price__details__status {
   display: flex;
-  width: 15vw;
+
   border: 1px solid lightgray;
   align-items: center;
   justify-content: space-between;
@@ -71,7 +71,7 @@
 }
 .productScreen__details__price__details__cart {
   display: flex;
-  width: 15vw;
+
   border: 1px solid lightgray;
   align-items: center;
   justify-content: center;
@@ -86,4 +86,22 @@
   color: white;
   text-decoration: none;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .productScreen__details {
+    margin-left: 5vw;
+    margin-top: 2vh;
+    display: inline-block;
+    width: 90vw;
+  }
+  .productScreen__details__subDetails {
+    width: 90vw;
+  }
+  .productScreen__details__subDetails > * {
+    width: 100%;
+  }
+  .productScreen__details__price {
+    width: 90vw;
+  }
 }
