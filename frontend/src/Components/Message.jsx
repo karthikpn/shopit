@@ -1,12 +1,12 @@
 import React from "react";
 
-const Message = ({ error }) => {
+const Message = ({ message, bcolor = "ffccb" }) => {
   return (
     <div
       style={{
         width: "80vw",
         padding: "1rem",
-        backgroundColor: "#ffcccb",
+        background: `${bcolor}`,
         marginLeft: "10vw",
         marginTop: "20vh",
       }}
@@ -18,7 +18,7 @@ const Message = ({ error }) => {
           fontFamily: "sans-serif",
         }}
       >
-        {error}
+        {message}
       </span>
     </div>
   );

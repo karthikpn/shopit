@@ -33,7 +33,7 @@ const ProductScreen = () => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message error={error} />
+        <Message message={error} />
       ) : (
         <div className="productScreen__details">
           <img
