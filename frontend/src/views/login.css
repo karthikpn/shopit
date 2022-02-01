@@ -1,0 +1,54 @@
+.login {
+  display: flex;
+  margin-top: 10vh;
+  height: 50vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.login > h2 {
+  display: inline-block;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 2rem;
+}
+.login__email {
+  padding: 1rem 0.2rem;
+  width: 20%;
+  outline: none;
+  border: 1px solid lightgray;
+}
+.login__password {
+  padding: 1rem 0.2rem;
+  width: 20%;
+  outline: none;
+  border: 1px solid lightgray;
+}
+.login__email:focus {
+  padding: 1rem 0.2rem;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+.login__password:focus {
+  padding: 1rem 0.2rem;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+.login__submit {
+  width: 10rem;
+  height: 3rem;
+  border: none;
+  outline: none;
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}

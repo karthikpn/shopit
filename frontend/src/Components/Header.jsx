@@ -1,8 +1,17 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { userLogoffAction } from "../actions/userAction";
 import "../views/header.css";
 
 const Header = () => {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(userLogoffAction());
+  };
+
   return (
     <div className="header">
       <div className="header__brand">
@@ -16,10 +25,30 @@ const Header = () => {
           <i class="fas fa-shopping-cart" style={{ marginRight: "0.5vw" }}></i>
           <span>Cart</span>
         </Link>
-        <Link to="/profile" className="header__options__profile">
-          <i class="fas fa-user" style={{ marginRight: "0.5vw" }}></i>
-          <span>Profile</span>
-        </Link>
+        <div>
+          {userInfo ? (
+            <>
+              <Link
+                to="/profile"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  marginRight: "1vw",
+                }}
+              >
+                Profile
+              </Link>
+              <span style={{ cursor: "pointer" }} onClick={handleLogout}>
+                Logout
+              </span>
+            </>
+          ) : (
+            <Link to="/login" className="header__options__profile">
+              <i class="fas fa-user" style={{ marginRight: "0.5vw" }}></i>
+              <span>Login</span>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
