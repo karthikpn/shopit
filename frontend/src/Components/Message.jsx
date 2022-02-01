@@ -8,7 +8,8 @@ const Message = ({ message, bcolor = "ffccb" }) => {
         padding: "1rem",
         background: `${bcolor}`,
         marginLeft: "10vw",
-        marginTop: "20vh",
+        marginTop: "10vh",
+        height: "10vh",
       }}
     >
       <span
