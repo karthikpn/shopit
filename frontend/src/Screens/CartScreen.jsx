@@ -16,6 +16,7 @@ const CartScreen = () => {
   let location = useLocation();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const { userInfo } = useSelector((state) => state.userLogin);
   const navigate = useNavigate();
   const { cartItems } = cart;
   const productId = params.id;
@@ -24,7 +25,9 @@ const CartScreen = () => {
     dispatch(removeFromCartAction(id));
   };
   const handleCheckOut = () => {
-    navigate("/login?redirect=shipping");
+    if (userInfo) {
+      navigate("/?thanks");
+    } else navigate("/login");
   };
   useEffect(() => {
     if (productId) {
