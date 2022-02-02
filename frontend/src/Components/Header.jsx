@@ -28,16 +28,6 @@ const Header = () => {
         <div>
           {userInfo ? (
             <>
-              <Link
-                to="/profile"
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                  marginRight: "1vw",
-                }}
-              >
-                Profile
-              </Link>
               <span style={{ cursor: "pointer" }} onClick={handleLogout}>
                 Logout
               </span>
