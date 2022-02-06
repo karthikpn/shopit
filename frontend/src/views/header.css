@@ -43,3 +43,12 @@
 .header__options__profile:hover {
   color: white;
 }
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .header__search {
+    min-width: 10vw;
+    padding: 1vh;
+    outline: none;
+    border: 1px solid;
+  }
+}

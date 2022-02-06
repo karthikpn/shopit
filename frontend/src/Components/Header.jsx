@@ -27,11 +27,30 @@ const Header = () => {
         </Link>
         <div>
           {userInfo ? (
-            <>
+            <div
+              className="header__profile__logout"
+              style={{
+                minWidth: "10vw",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <span style={{ cursor: "pointer" }}>
+                <Link
+                  to="/profile"
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                  }}
+                >
+                  Profile
+                </Link>
+              </span>
               <span style={{ cursor: "pointer" }} onClick={handleLogout}>
                 Logout
               </span>
-            </>
+            </div>
           ) : (
             <Link to="/login" className="header__options__profile">
               <i class="fas fa-user" style={{ marginRight: "0.5vw" }}></i>

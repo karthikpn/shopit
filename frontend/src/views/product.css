@@ -3,6 +3,7 @@
   border-radius: 0.5rem;
   padding: 0.5rem;
   overflow-y: hidden;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 .product__item__image {
   object-fit: contain;
@@ -15,6 +16,7 @@
   align-items: center;
   justify-content: space-around;
 }
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   .product__item__image {

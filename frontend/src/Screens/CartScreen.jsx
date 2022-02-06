@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import {
   addToCartAction,
-  removeFrom,
+  itemsPriceAction,
   removeFromCartAction,
 } from "../actions/cartActions";
 import Message from "../Components/Message";
@@ -26,7 +26,8 @@ const CartScreen = () => {
   };
   const handleCheckOut = () => {
     if (userInfo) {
-      navigate("/?thanks");
+      dispatch(itemsPriceAction());
+      navigate("/order");
     } else navigate("/login");
   };
   useEffect(() => {

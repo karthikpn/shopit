@@ -20,7 +20,12 @@ const Home = () => {
   }, [dispatch]);
   return (
     <div className="home">
-      {redirect == "thanks" && <Message message="Thanks for Shopping" />}
+      {redirect == "thanks" && (
+        <Message
+          message="Thanks for Shopping"
+          style={{ opacity: "0.5", color: "green" }}
+        />
+      )}
       {loading ? (
         <Loader />
       ) : error ? (

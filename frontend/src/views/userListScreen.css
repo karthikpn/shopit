@@ -1,0 +1,21 @@
+.userlist {
+  margin-top: 5vh;
+  margin-left: 5vw;
+}
+.userlist > h1 {
+  margin-bottom: 4vh;
+}
+table {
+  border: 2px solid forestgreen;
+  width: 70vw;
+}
+th {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  padding: 1rem;
+}
+td {
+  text-align: center;
+  padding: 1rem;
+  border-right: 1px solid black;
+}

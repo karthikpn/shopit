@@ -75,3 +75,88 @@ export const userRegisterAction =
       });
     }
   };
+
+export const userDetailsAction = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "USER_DETAILS_REQUEST",
+    });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          getState().userLogin.userInfo && getState().userLogin.userInfo.token,
+      },
+    };
+    const { data } = await axios.get("/api/users/profile", config);
+    console.log(data);
+    dispatch({
+      type: "USER_DETAILS_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "USER_DETAILS_FAILED",
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const userUpdateProfileAction = (user) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "USER_UPDATE_PROFILE_REQUEST",
+    });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: getState().userLogin.userInfo.token,
+      },
+    };
+    const { data } = await axios.put("/api/users/profile", user, config);
+
+    dispatch({
+      type: "USER_UPDATE_PROFILE_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "USER_UPDATE_PROFILE_FAILED",
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const userListAction = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "USER_LIST_REQUEST",
+    });
+    const config = {
+      headers: {
+        Authorization:
+          getState().userLogin.userInfo && getState().userLogin.userInfo.token,
+      },
+    };
+    const { data } = await axios.get("/api/users", config);
+
+    dispatch({
+      type: "USER_LIST_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "USER_LIST_FAILED",
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

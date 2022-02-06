@@ -23,6 +23,13 @@ export const removeFromCartAction = (id) => (dispatch, getState) => {
   });
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };
-export const removeFrom = (id) => (dispatch, getState) => {
-  console.log("aisu");
+
+export const itemsPriceAction = () => (dispatch, getState) => {
+  dispatch({
+    type: "CART_PRICE_ITEM",
+  });
+  localStorage.setItem(
+    "itemsPrice",
+    JSON.stringify(getState().cart.itemsPrice)
+  );
 };

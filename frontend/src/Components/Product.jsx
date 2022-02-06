@@ -1,9 +1,25 @@
+import axios from "axios";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { listProductsAction } from "../actions/productActions";
 import "../views/product.css";
 import Rating from "./Rating";
 
-const Product = ({ product }) => {
+const Product = ({ product, deleteOption = false, updateOption = false }) => {
+  const dispatch = useDispatch();
+  const config = {
+    headers: {
+      Authorization: useSelector(
+        (state) => state.userLogin.userInfo && state.userLogin.userInfo.token
+      ),
+    },
+  };
+  const deleteProduct = async () => {
+    await axios.delete(`api/products/${product._id}`, config);
+    dispatch(listProductsAction());
+  };
+
   return (
     <div className="product__item">
       <Link to={`/products/${product._id}`}>
@@ -15,6 +31,45 @@ const Product = ({ product }) => {
           <Rating rating={product.rating} color="#152238" />
         </i>
         <h4>${product.price}</h4>
+        {deleteOption && (
+          <button
+            style={{
+              border: "none",
+              outline: "none",
+              background: "white",
+              cursor: "pointer",
+            }}
+            onClick={deleteProduct}
+          >
+            <i
+              className="fas fa-trash"
+              style={{
+                fontSize: "1.5rem",
+                color: "#ec4332",
+              }}
+            ></i>
+          </button>
+        )}
+        {updateOption && (
+          <button
+            style={{
+              border: "none",
+              outline: "none",
+              background: "white",
+              cursor: "pointer",
+            }}
+          >
+            <Link to={`/changeproducts/${product._id}`}>
+              <i
+                class="fas fa-edit"
+                style={{
+                  fontSize: "1.5rem",
+                  color: "gray",
+                }}
+              ></i>
+            </Link>
+          </button>
+        )}
       </div>
     </div>
   );
