@@ -13,7 +13,6 @@ import UserListScreen from "./Screens/UserListScreen";
 import OrderByUser from "./Screens/OrderByUser";
 import ProductListScreen from "./Screens/ProductListScreen";
 import NewProductScreen from "./Screens/NewProductScreen";
-import UpdateProductScreen from "./Screens/UpdateProductScreen";
 
 function App() {
   return (
@@ -36,7 +35,6 @@ function App() {
           <Route path="/changeproducts" element={<ProductListScreen />} />
           <Route path="/changeproducts">
             <Route path="new" element={<NewProductScreen />} />
-            <Route path=":id" element={<UpdateProductScreen />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

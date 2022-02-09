@@ -6,7 +6,7 @@ import { listProductsAction } from "../actions/productActions";
 import "../views/product.css";
 import Rating from "./Rating";
 
-const Product = ({ product, deleteOption = false, updateOption = false }) => {
+const Product = ({ product, deleteOption = false }) => {
   const dispatch = useDispatch();
   const config = {
     headers: {
@@ -48,26 +48,6 @@ const Product = ({ product, deleteOption = false, updateOption = false }) => {
                 color: "#ec4332",
               }}
             ></i>
-          </button>
-        )}
-        {updateOption && (
-          <button
-            style={{
-              border: "none",
-              outline: "none",
-              background: "white",
-              cursor: "pointer",
-            }}
-          >
-            <Link to={`/changeproducts/${product._id}`}>
-              <i
-                class="fas fa-edit"
-                style={{
-                  fontSize: "1.5rem",
-                  color: "gray",
-                }}
-              ></i>
-            </Link>
           </button>
         )}
       </div>

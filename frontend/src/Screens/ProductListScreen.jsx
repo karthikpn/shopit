@@ -53,9 +53,7 @@ const ProductListScreen = () => {
       ) : (
         <div className="home__products">
           {products &&
-            products.map((p) => (
-              <Product product={p} deleteOption={true} updateOption={true} />
-            ))}
+            products.map((p) => <Product product={p} deleteOption={true} />)}
         </div>
       )}
     </div>
