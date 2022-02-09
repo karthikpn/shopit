@@ -74,7 +74,7 @@ const UserListScreen = () => {
             {users &&
               users.map((user) => {
                 return (
-                  <tr key={user._id}>
+                  <tbody key={user._id}>
                     <td>{user.name}</td>
 
                     <td>{user.email}</td>
@@ -104,7 +104,7 @@ const UserListScreen = () => {
                         </button>
                       )}
                     </td>
-                  </tr>
+                  </tbody>
                 );
               })}
           </table>

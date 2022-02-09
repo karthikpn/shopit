@@ -4,13 +4,13 @@ const Message = ({ message, bcolor = "#ffccbe" }) => {
   return (
     <div
       style={{
-        width: "30vw",
+        width: "fit-content",
         display: "inline-block",
         zIndex: "1",
         padding: "0.5rem",
         backgroundColor: `${bcolor}`,
-        marginLeft: "20vw",
-        marginTop: "4vh",
+        marginLeft: "10vw",
+        marginTop: "0vh",
         position: "absolute",
       }}
     >

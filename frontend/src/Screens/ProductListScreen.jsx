@@ -36,7 +36,7 @@ const ProductListScreen = () => {
       >
         <h1>Products</h1>
         <div className="productScreen__back" style={{ marginRight: "4vw" }}>
-          <Link to="/changeproducts/new" className="productScreen__back__link">
+          <Link to="/addproduct" className="productScreen__back__link">
             Create New Product
           </Link>
         </div>

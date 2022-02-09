@@ -1,0 +1,19 @@
+.newproduct {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  align-items: center;
+  justify-content: space-around;
+}
+.newproduct > input {
+  padding: 1rem 1rem;
+  outline: none;
+  width: 20%;
+}
+input:focus {
+  box-shadow: 0 0 5px rgb(33, 38, 39);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgb(158, 164, 165);
+  padding: 1rem 1rem;
+}

@@ -33,9 +33,8 @@ function App() {
           <Route path="/order/:id" element={<OrderByUser />} />
           <Route path="/userlist" element={<UserListScreen />} />
           <Route path="/changeproducts" element={<ProductListScreen />} />
-          <Route path="/changeproducts">
-            <Route path="new" element={<NewProductScreen />} />
-          </Route>
+          <Route path="/addproduct" element={<NewProductScreen />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
