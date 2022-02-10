@@ -11,6 +11,7 @@ import Message from "../Components/Message";
 import "../views/cartScreen.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 const CartScreen = () => {
   const params = useParams();
   let location = useLocation();
@@ -36,85 +37,91 @@ const CartScreen = () => {
     }
   }, [dispatch, productId, qty]);
   return (
-    <div className="cart">
-      <h2 style={{ marginLeft: "1vw", marginTop: "2vh" }}>Shopping Cart</h2>
-      {cartItems.length === 0 ? (
-        <Message message="No Items available" bcolor="#add8e6" />
-      ) : (
-        <div className="cart__items">
-          {cartItems.map((item) => (
-            <div className="cart__item" key={item.product}>
-              <img src={item.image} alt="" className="cart__item__image" />
-              <Link
-                className="cart__item__name"
-                to={`/products/${item.product}`}
-              >
-                {item.name}
-              </Link>
-              <span className="cart__item__price">
-                ${Math.round(item.price * item.qty)}
-              </span>
-              <div>
-                <select
-                  style={{ padding: "0.4rem" }}
-                  id="qty"
-                  name="qty"
-                  value={item.qty}
-                  onChange={(e) =>
-                    dispatch(
-                      addToCartAction(item.product, Number(e.target.value))
-                    )
-                  }
+    <>
+      <Helmet>
+        <title>ShopIt Cart</title>
+      </Helmet>
+      <div className="cart">
+        <h2 style={{ marginLeft: "1vw", marginTop: "2vh" }}>Shopping Cart</h2>
+        {cartItems.length === 0 ? (
+          <Message message="No Items available" bcolor="#add8e6" />
+        ) : (
+          <div className="cart__items">
+            {cartItems.map((item) => (
+              <div className="cart__item" key={item.product}>
+                <img src={item.image} alt="" className="cart__item__image" />
+                <Link
+                  className="cart__item__name"
+                  to={`/products/${item.product}`}
                 >
-                  {[...Array(item.countInStock).keys()].map((x) => (
-                    <option key={x + 1} value={x + 1}>
-                      {x + 1}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <button
-                className="cart__item__delete"
-                onClick={() => removeFromCartHandler(item.product)}
-                style={{
-                  border: "none",
-                  outline: "none",
-                  background: "white",
-                  cursor: "pointer",
-                }}
-              >
-                <i
-                  className="fas fa-trash"
+                  {item.name}
+                </Link>
+                <span className="cart__item__price">
+                  ${Math.round(item.price * item.qty)}
+                </span>
+                <div>
+                  <select
+                    style={{ padding: "0.4rem" }}
+                    id="qty"
+                    name="qty"
+                    value={item.qty}
+                    onChange={(e) =>
+                      dispatch(
+                        addToCartAction(item.product, Number(e.target.value))
+                      )
+                    }
+                  >
+                    {[...Array(item.countInStock).keys()].map((x) => (
+                      <option key={x + 1} value={x + 1}>
+                        {x + 1}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <button
+                  className="cart__item__delete"
+                  onClick={() => removeFromCartHandler(item.product)}
                   style={{
-                    fontSize: "2rem",
-                    color: "#ec4332",
+                    border: "none",
+                    outline: "none",
+                    background: "white",
+                    cursor: "pointer",
                   }}
-                ></i>
+                >
+                  <i
+                    className="fas fa-trash"
+                    style={{
+                      fontSize: "2rem",
+                      color: "#ec4332",
+                    }}
+                  ></i>
+                </button>
+              </div>
+            ))}
+            <div className="cart__items__finalPrice">
+              <h3>
+                Total Items :{" "}
+                {cartItems.reduce((acc, item) => acc + item.qty, 0)}
+              </h3>
+              <h3>
+                Price :{" "}
+                {cartItems.reduce(
+                  (acc, item) => Math.round(acc + item.price * item.qty),
+                  0
+                )}{" "}
+              </h3>
+              <button
+                className="cart__item__checkout"
+                disabled={cartItems.length === 0}
+                onClick={handleCheckOut}
+              >
+                Checkout
               </button>
             </div>
-          ))}
-          <div className="cart__items__finalPrice">
-            <h3>
-              Total Items : {cartItems.reduce((acc, item) => acc + item.qty, 0)}
-            </h3>
-            <h3>
-              Price :{" "}
-              {cartItems.reduce(
-                (acc, item) => Math.round(acc + item.price * item.qty),
-                0
-              )}{" "}
-            </h3>
-            <button
-              className="cart__item__checkout"
-              disabled={cartItems.length === 0}
-              onClick={handleCheckOut}
-            >
-              Checkout
-            </button>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 

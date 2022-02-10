@@ -3,8 +3,23 @@ import Product from "../models/productModel.js";
 
 //Fetch all Products
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
-  res.send(products);
+  const pageSize = 10;
+  const page = Number(req.query.pageNumber) || 1;
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        },
+      }
+    : {};
+
+  const count = await Product.count({ ...keyword });
+
+  const products = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 //etch single Product
@@ -91,10 +106,17 @@ const createReview = asyncHandler(async (req, res) => {
   }
 });
 
+//get top rated products
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(3);
+  res.json(products);
+});
+
 export {
   getProductByID,
   getProducts,
   deleteProduct,
   createProduct,
   createReview,
+  getTopProducts,
 };

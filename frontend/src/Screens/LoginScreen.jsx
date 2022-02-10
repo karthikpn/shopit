@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Message from "../Components/Message";
 import Loader from "../Components/Loader";
+import { Helmet } from "react-helmet";
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +33,9 @@ const LoginScreen = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Login to Shopit</title>
+      </Helmet>
       {error && <Message message={error} />}
       {loading && <Loader />}
       <div className="login">

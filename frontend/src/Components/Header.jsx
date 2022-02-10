@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { createProductReviewResetAction } from "../actions/productActions";
 import { userLogoffAction } from "../actions/userAction";
 import "../views/header.css";
+import SearchBox from "./SearchBox";
 
 const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
@@ -21,7 +22,7 @@ const Header = () => {
           <h2>ShopIt</h2>
         </Link>
       </div>
-      <input type="text" className="header__search" />
+      <SearchBox />
       <div className="header__options">
         <Link to="/cart" className="header__options__cart">
           <i class="fas fa-shopping-cart" style={{ marginRight: "0.5vw" }}></i>

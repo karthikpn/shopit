@@ -26,14 +26,25 @@ function App() {
             <Route path="" element={<CartScreen />} />
           </Route>
           <Route path="/login" element={<LoginScreen />} />
-          <Route path="/" element={<Home />} />
+
           <Route path="/register" element={<RegisterScreen />} />
           <Route path="/profile" element={<ProfileScreen />} />
           <Route path="/order" element={<OrderScreen />} />
           <Route path="/order/:id" element={<OrderByUser />} />
           <Route path="/userlist" element={<UserListScreen />} />
+
           <Route path="/changeproducts" element={<ProductListScreen />} />
+          <Route
+            path="/changeproducts/:pageNumber"
+            element={<ProductListScreen />}
+          />
+
           <Route path="/addproduct" element={<NewProductScreen />} />
+
+          <Route path="/search/:keyword" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/page/:pageNumber" element={<Home />} />
+          <Route path="/search/:keyword/page/:pageNumber" element={<Home />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

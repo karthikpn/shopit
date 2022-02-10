@@ -4,6 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
   createProductReviewReducer,
   createProductsReducer,
+  getTopProductsReducer,
   productDetailsReducer,
   productListReducer,
 } from "./reducers/productReducers";
@@ -29,6 +30,7 @@ const reducer = combineReducers({
   userList: userListReducer,
   createProduct: createProductsReducer,
   productReviewCreate: createProductReviewReducer,
+  getTopProducts: getTopProductsReducer,
 });
 
 const middleware = [thunk];
