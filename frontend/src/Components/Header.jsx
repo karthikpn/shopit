@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { createProductReviewResetAction } from "../actions/productActions";
 import { userLogoffAction } from "../actions/userAction";
 import "../views/header.css";
 
@@ -9,6 +10,7 @@ const Header = () => {
   const { userInfo } = userLogin;
   const dispatch = useDispatch();
   const handleLogout = () => {
+    dispatch(createProductReviewResetAction());
     dispatch(userLogoffAction());
   };
 

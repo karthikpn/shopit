@@ -58,4 +58,43 @@ const createProduct = asyncHandler(async (req, res) => {
   res.status(201).json(createdProduct);
 });
 
-export { getProductByID, getProducts, deleteProduct, createProduct };
+//create new review
+const createReview = asyncHandler(async (req, res) => {
+  const user = req.user;
+  const { rating, comment } = req.body;
+  const products = await Product.findById(req.params.id);
+  if (products) {
+    const alreadyReviewed = products.reviews.find(
+      (r) => r.user.toString() === req.user._id.toString()
+    );
+    if (alreadyReviewed) {
+      res.status(400);
+      throw new Error("Product already reviewed");
+    }
+    const review = {
+      name: req.user.name,
+      rating: Number(rating),
+      comment,
+      user: req.user._id,
+    };
+
+    products.reviews.push(review);
+    products.numReviews = products.reviews.length;
+    products.rating =
+      products.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      products.reviews.length;
+    await products.save();
+    res.status(201).json({ message: "Review Added" });
+  } else {
+    res.status(400);
+    throw new Error("Product not found");
+  }
+});
+
+export {
+  getProductByID,
+  getProducts,
+  deleteProduct,
+  createProduct,
+  createReview,
+};

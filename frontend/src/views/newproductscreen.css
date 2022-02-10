@@ -10,7 +10,7 @@
   outline: none;
   width: 20%;
 }
-input:focus {
+.newproduct > input:focus {
   box-shadow: 0 0 5px rgb(33, 38, 39);
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;

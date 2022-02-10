@@ -26,7 +26,6 @@ export const getOrderByUser = asyncHandler(async (req, res) => {
     "name email"
   );
   if (order) {
-    console.log(order);
     res.json(order);
   } else {
     res.status(404);
@@ -40,7 +39,6 @@ export const getOrderByUserforAdmin = asyncHandler(async (req, res) => {
     "name email"
   );
   if (order) {
-    console.log(order);
     res.json(order);
   } else {
     res.status(404);

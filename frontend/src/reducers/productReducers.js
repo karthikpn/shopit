@@ -42,3 +42,18 @@ export const createProductsReducer = (
       return state;
   }
 };
+
+export const createProductReviewReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "PRODUCT_CREATE_REVIEW_REQUEST":
+      return { loading: true, product: {} };
+    case "PRODUCT_CREATE_REVIEW_SUCCESS":
+      return { loading: false, success: true };
+    case "PRODUCT_CREATE_REVIEW_FAILED":
+      return { loading: false, error: action.payload };
+    case "PRODUCT_CREATE_REVIEW_RESET":
+      return { loading: false, product: {}, success: false };
+    default:
+      return state;
+  }
+};

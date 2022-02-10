@@ -9,13 +9,22 @@ import orderRoutes from "./routes/orderRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import path from "path";
+import morgan from "morgan";
 
 const app = express();
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
 app.use(express.json());
+
 dotenv.config();
 connectDB();
+
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "frontend/public")));
+
 app.use("/api/products", productRoutes);
 
 app.use("/api/users", userRoutes);
