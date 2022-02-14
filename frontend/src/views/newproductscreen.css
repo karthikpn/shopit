@@ -10,10 +10,3 @@
   outline: none;
   width: 20%;
 }
-.newproduct > input:focus {
-  box-shadow: 0 0 5px rgb(33, 38, 39);
-  padding: 3px 0px 3px 3px;
-  margin: 5px 1px 3px 0px;
-  border: 1px solid rgb(158, 164, 165);
-  padding: 1rem 1rem;
-}

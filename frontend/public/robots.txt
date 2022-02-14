@@ -1,3 +1,43 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+
+{orders ? (
+          orders.map((order) => (
+            <div className="user__order__items">
+              <h3 style={{ margin: "1rem", marginLeft: "5rem" }}>
+                Order Value :{" "}
+                {Math.round(
+                  order.orderItems.reduce(
+                    (a, item) => a + item.price * item.qty,
+                    0
+                  )
+                )}{" "}
+              </h3>
+              <div className="cart__items">
+                {order.orderItems.map((item) => (
+                  <div className="cart__item" key={item.product}>
+                    <img
+                      src={item.image}
+                      alt=""
+                      className="cart__item__image"
+                    />
+                    <Link
+                      className="cart__item__name"
+                      to={`/products/${item.product}`}
+                    >
+                      {item.name}
+                    </Link>
+                    <span className="cart__item__price">
+                      {item.qty} * {item.price} = $
+                      {Math.round(item.price * item.qty)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        ) : (
+          <Message message="No orders yet :(" />
+        )}

@@ -43,8 +43,9 @@ export const userUpdateProfileReducer = (state = {}, action) => {
   switch (action.type) {
     case "USER_UPDATE_PROFILE_REQUEST":
       return { ...state, loading: true };
+
     case "USER_UPDATE_PROFILE_SUCCESS":
-      return { loading: false, sucesss: true, userInfo: action.payload };
+      return { loading: false, success: true, userInfo: action.payload };
     case "USER_UPDATE_PROFILE_FAILED":
       return { loading: false, error: action.payload };
 

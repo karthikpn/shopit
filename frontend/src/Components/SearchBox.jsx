@@ -13,15 +13,22 @@ const SearchBox = () => {
     }
   };
   return (
-    <div>
-      <input
-        className="header__search"
-        type="text"
-        placeholder="Search"
-        value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
-      />
-      <button onClick={submitHandler}>Search</button>
+    <div class="flex items-center justify-center ">
+      <div class="flex rounded ">
+        <input
+          className="w-3/4 px-4 py-2 text-black"
+          type="text"
+          placeholder="Search"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+        <button
+          className="border-l bg-blue-500 px-4 text-white hover:bg-blue-600 "
+          onClick={submitHandler}
+        >
+          Search
+        </button>
+      </div>
     </div>
   );
 };

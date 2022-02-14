@@ -29,6 +29,7 @@ const NewProductScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(countInStock);
     dispatch(
       createProductAction({
         name,
@@ -68,24 +69,33 @@ const NewProductScreen = () => {
         Create Product
       </h2>
       {loading && <Loader />}
-      {error && <Message message={error} />}
-      {product.name && <Message message="Product created" bcolor="darkgreen" />}
-      <div className="newproduct">
+      {error ? (
+        <Message message={error} />
+      ) : (
+        product.name && <Message message="Product created" bcolor="darkgreen" />
+      )}
+      <form className="newproduct">
         <input
-          type="text"
+          className="block w-full rounded-md border border-slate-300 bg-white py-2 pl-9 pr-3 shadow-sm placeholder:italic placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
           placeholder="Name"
+          type="text"
+          required
           onChange={(e) => setName(e.target.value)}
         />
         <input
           type="number"
+          className="block w-full rounded-md border border-slate-300 bg-white py-2 pl-9 pr-3 shadow-sm placeholder:italic placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
           placeholder="Price"
+          required
           onChange={(e) => setPrice(e.target.value)}
         />
         <div style={{ display: "flex", flexDirection: "column", width: "20%" }}>
           <input
             style={{ padding: "1rem 1rem" }}
+            className="block w-full rounded-md border border-slate-300 bg-white py-2 pl-9 pr-3 shadow-sm placeholder:italic placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
             type="text"
             id="image-upload"
+            required
             placeholder={image || "Image"}
             onChange={(e) => setImage(e.target.value)}
           />
@@ -93,6 +103,7 @@ const NewProductScreen = () => {
             label="Choose file"
             id="image-upload"
             type="file"
+            required
             placeholder="Image"
             onChange={uploadFileHandler}
           />
@@ -101,29 +112,40 @@ const NewProductScreen = () => {
         <input
           type="text"
           placeholder="Brand"
+          className="block w-full rounded-md border border-slate-300 bg-white py-2 pl-9 pr-3 shadow-sm placeholder:italic placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+          required
           onChange={(e) => setBrand(e.target.value)}
         />
         <input
           type="text"
+          className="block w-full rounded-md border border-slate-300 bg-white py-2 pl-9 pr-3 shadow-sm placeholder:italic placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
           placeholder="Category"
+          required
           onChange={(e) => setCategory(e.target.value)}
         />
         <input
           type="number"
           placeholder="CountInStock"
+          className="block w-full rounded-md border border-slate-300 bg-white py-2 pl-9 pr-3 shadow-sm placeholder:italic placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+          required
           onChange={(e) => setCountInStock(e.target.value)}
         />
         <input
           type="text"
           placeholder="Description"
+          className="block w-full rounded-md border border-slate-300 bg-white py-2 pl-9 pr-3 shadow-sm placeholder:italic placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+          required
           onChange={(e) => setDescription(e.target.value)}
         />
-        <div className="productScreen__back" style={{ marginRight: "4vw" }}>
-          <button className="productScreen__back__link" onClick={submitHandler}>
-            Create
-          </button>
-        </div>
-      </div>
+
+        <button
+          className="productScreen__back__link"
+          type="submit"
+          onClick={submitHandler}
+        >
+          Create
+        </button>
+      </form>
     </>
   );
 };

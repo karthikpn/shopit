@@ -26,7 +26,7 @@
   display: flex;
 }
 .productScreen__details__subDetails {
-  margin-right: 10vw;
+  margin-right: 2vw;
 }
 .productScreen__details__subDetails > h2 {
   font-family: "Dongle", sans-serif;
@@ -45,7 +45,7 @@
 }
 .productScreen__details__subDetails__desc {
   margin-top: 2.5vh;
-  width: 15vw;
+  width: fit-content;
   color: #152238;
   line-height: 2rem;
 }
@@ -105,10 +105,12 @@
   }
   .productScreen__details__subDetails {
     width: 90vw;
+    overflow-x: hidden;
   }
   .productScreen__details__subDetails > * {
     width: 100%;
   }
+
   .productScreen__details__price {
     width: 90vw;
   }

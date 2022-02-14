@@ -3,7 +3,7 @@ import Product from "../models/productModel.js";
 
 //Fetch all Products
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 10;
+  const pageSize = 6;
   const page = Number(req.query.pageNumber) || 1;
   const keyword = req.query.keyword
     ? {
@@ -47,30 +47,36 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 //create a product
 const createProduct = asyncHandler(async (req, res) => {
+  console.log(req.body.countInstock);
   const user = req.user;
-  const {
-    name,
-    price,
-    image,
-    brand,
-    category,
-    countInstock,
-    numReviews,
-    description,
-  } = req.body;
-  const product = new Product({
-    name,
-    price,
-    user,
-    image,
-    brand,
-    category,
-    countInstock,
-    numReviews,
-    description,
-  });
-  const createdProduct = await product.save();
-  res.status(201).json(createdProduct);
+  try {
+    const {
+      name,
+      price,
+      image,
+      brand,
+      category,
+      countInStock,
+      numReviews,
+      description,
+    } = req.body;
+    const product = new Product({
+      name,
+      price,
+      user,
+      image,
+      brand,
+      category,
+      countInStock,
+      numReviews,
+      description,
+    });
+    const createdProduct = await product.save();
+    res.status(201).json(createdProduct);
+  } catch (error) {
+    res.status(400);
+    throw new Error("Please enter all details");
+  }
 });
 
 //create new review
@@ -84,7 +90,9 @@ const createReview = asyncHandler(async (req, res) => {
     );
     if (alreadyReviewed) {
       res.status(400);
-      throw new Error("Product already reviewed");
+      throw new Error(
+        "You have already reviewed or not provided proper review"
+      );
     }
     const review = {
       name: req.user.name,

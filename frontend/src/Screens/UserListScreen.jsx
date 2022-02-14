@@ -56,12 +56,12 @@ const UserListScreen = () => {
             <h1>User List</h1>
             <div className="productScreen__back" style={{ marginRight: "4vw" }}>
               <Link to="/changeproducts" className="productScreen__back__link">
-                Add and Remove Product
+                Products
               </Link>
             </div>
           </div>
 
-          <table>
+          <table className="w-4/5 p-10">
             <tr>
               <th>Name</th>
               <th>Email</th>
@@ -81,7 +81,9 @@ const UserListScreen = () => {
                     <td>{new Date(user.createdAt).toLocaleDateString()}</td>
                     <td>{user.isAdmin ? "True" : "False"}</td>
                     <td>
-                      <Link to={`/order/${user._id}`}>Orders</Link>
+                      <Link className="text-blue-700" to={`/order/${user._id}`}>
+                        Orders
+                      </Link>
                     </td>
                     <td>
                       {!user.isAdmin && (

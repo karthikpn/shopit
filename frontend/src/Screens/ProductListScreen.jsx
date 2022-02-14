@@ -27,24 +27,24 @@ const ProductListScreen = () => {
   }, [dispatch, pageNumber]);
 
   return (
-    <div>
+    <>
       <div
+        className="w-full"
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
           marginBottom: "5vh",
           marginTop: "4vh",
-          marginLeft: "4vw",
         }}
       >
         <h1>Products</h1>
-        <div className="productScreen__back" style={{ marginRight: "4vw" }}>
+        <div className="productScreen__back">
           <Link to="/addproduct" className="productScreen__back__link">
-            Create New Product
+            New Product
           </Link>
         </div>
-        <div className="productScreen__back" style={{ marginRight: "4vw" }}>
+        <div className="productScreen__back">
           <Link to="/userlist" className="productScreen__back__link">
             Users
           </Link>
@@ -56,14 +56,14 @@ const ProductListScreen = () => {
         <Message message={error} />
       ) : (
         <>
-          <div className="home__products">
+          <div className="mx-2 grid gap-5 sm:grid-cols-1 sm:grid-rows-2 md:grid-cols-2 md:grid-rows-1 lg:grid-cols-3 xl:grid-cols-3">
             {products &&
               products.map((p) => <Product product={p} deleteOption={true} />)}
           </div>
           <Paginate pages={pages} page={page} isAdmin={true} />
         </>
       )}
-    </div>
+    </>
   );
 };
 

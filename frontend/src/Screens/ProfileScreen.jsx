@@ -30,7 +30,7 @@ const ProfileScreen = () => {
   const { userInfo } = userLogin;
 
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
-  const { success } = userUpdateProfile;
+  const { loading: loadingProfileUpdate, success } = userUpdateProfile;
 
   const redirect = location.search ? location.search.split("=") : "/";
   const [orders, setOrders] = useState([]);
@@ -64,14 +64,10 @@ const ProfileScreen = () => {
   }, [navigate, userInfo, user]);
 
   const submitHandler = (e) => {
-    e.preventDefault();
     dispatch(userUpdateProfileAction({ id: user._id, name, email, password }));
   };
   return (
     <>
-      {error && <Message message={error} />}
-      {loading && <Loader />}
-      {success && <Message message="Profile Updated" color="#FF5733" />}
       {userInfo?.isAdmin && (
         <div className="productScreen__back" style={{ marginTop: "2vh" }}>
           <Link to="/userlist" className="productScreen__back__link">
@@ -79,12 +75,16 @@ const ProfileScreen = () => {
           </Link>
         </div>
       )}
+      {error && <Message message={error} />}
+      {loadingProfileUpdate && <Loader />}
+      {console.log(success)}
+      {success && <Message message="Profile Updated" bcolor="lightgreen" />}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-around",
-          height: "30vh",
+          height: "50vh",
           marginTop: "10vh",
           alignItems: "center",
         }}
@@ -115,48 +115,6 @@ const ProfileScreen = () => {
         <span>
           Dont want to change ? <Link to="/">Home</Link>{" "}
         </span>
-      </div>
-      <div className="user__order">
-        <h2 style={{ margin: "2rem 3rem" }}>Order History</h2>
-
-        {orders ? (
-          orders.map((order) => (
-            <div className="user__order__items">
-              <h3 style={{ margin: "1rem", marginLeft: "5rem" }}>
-                Order Value :{" "}
-                {Math.round(
-                  order.orderItems.reduce(
-                    (a, item) => a + item.price * item.qty,
-                    0
-                  )
-                )}{" "}
-              </h3>
-              <div className="cart__items">
-                {order.orderItems.map((item) => (
-                  <div className="cart__item" key={item.product}>
-                    <img
-                      src={item.image}
-                      alt=""
-                      className="cart__item__image"
-                    />
-                    <Link
-                      className="cart__item__name"
-                      to={`/products/${item.product}`}
-                    >
-                      {item.name}
-                    </Link>
-                    <span className="cart__item__price">
-                      {item.qty} * {item.price} = $
-                      {Math.round(item.price * item.qty)}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))
-        ) : (
-          <Message message="No orders yet :(" />
-        )}
       </div>
     </>
   );

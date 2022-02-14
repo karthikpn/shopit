@@ -41,6 +41,7 @@ export const productDetailsAction = (id) => async (dispatch) => {
 
 export const createProductAction = (product) => async (dispatch, getState) => {
   try {
+    console.log(product);
     dispatch({ type: "PRODUCT_CREATE_REQUEST" });
     const config = {
       headers: {

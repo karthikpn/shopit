@@ -14,7 +14,7 @@ import Loader from "../Components/Loader";
 import axios from "axios";
 const OrderByUser = () => {
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const params = useParams();
@@ -33,11 +33,13 @@ const OrderByUser = () => {
       navigate("/login");
     } else {
       const getOrders = async () => {
+        setLoading(true);
         const { data: order } = await axios.get(
           `/api/orders/${params.id}`,
           config
         );
         setOrders(order);
+        setLoading(false);
         console.log(order);
       };
       getOrders();
@@ -46,8 +48,8 @@ const OrderByUser = () => {
   return (
     <div className="user__order">
       <h2 style={{ margin: "2rem 3rem" }}>Order History</h2>
-
-      {orders ? (
+      {loading && <Loader />}
+      {orders.length != 0 ? (
         orders.map((order) => (
           <div className="user__order__items">
             <h3 style={{ margin: "1rem", marginLeft: "5rem" }}>

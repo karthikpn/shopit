@@ -30,13 +30,14 @@ const Home = () => {
       <Helmet>
         <title>Welcome to Shopit</title>
       </Helmet>
-      <div className="home">
+      <div className="m-8">
         {keyword && (
-          <div className="productScreen__back">
-            <Link to="/" className="productScreen__back__link">
-              Go Back
-            </Link>
-          </div>
+          <button
+            type="button"
+            className=" ml-14 mb-2 rounded-lg bg-gray-800 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 "
+          >
+            <Link to="/">Go Back</Link>
+          </button>
         )}
         {redirect == "thanks" && (
           <Message
@@ -50,11 +51,16 @@ const Home = () => {
           <Message message={error} />
         ) : (
           <>
-            <div className="home__products">
+            {keyword ? (
+              <h1 className="mt-6 ml-14">Found {products.length} products</h1>
+            ) : (
+              <h1 className=" ml-14 mb-10 inline-block">Top Products</h1>
+            )}
+            <div className="grid gap-5 sm:grid-cols-1 sm:grid-rows-2 md:grid-cols-2 md:grid-rows-1 lg:grid-cols-3 xl:grid-cols-3">
               {products.length > 0 ? (
                 products.map((product) => <Product product={product} />)
               ) : (
-                <h3 style={{ margin: "3rem" }}>No Products Found</h3>
+                <></>
               )}
             </div>
             <Paginate
