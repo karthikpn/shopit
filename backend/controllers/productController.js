@@ -22,7 +22,7 @@ const getProducts = asyncHandler(async (req, res) => {
   res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
-//etch single Product
+//fetch single Product
 const getProductByID = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (product) {

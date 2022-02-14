@@ -184,14 +184,16 @@ const ProductScreen = () => {
           ) : (
             <>
               {product.reviews?.map((review) => (
-                <>
-                  <span>{review.name}</span>
+                <div className="mx-10 flex flex-col  p-4">
                   <span>
                     <Rating rating={review.rating} />
                   </span>
-                  <span>{review.createdAt.substring(0, 10)}</span>
                   <span>{review.comment}</span>
-                </>
+                  <span>{review.name}</span>
+                  <span className="text-zinc-400">
+                    {review.createdAt.substring(0, 10)}
+                  </span>
+                </div>
               ))}
             </>
           )}
