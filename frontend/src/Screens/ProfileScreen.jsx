@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../Components/Message";
 import Loader from "../Components/Loader";
 import axios from "axios";
+import UserOrder from "../Components/UserOrder";
 
 const ProfileScreen = () => {
   const [email, setEmail] = useState("");
@@ -115,6 +116,9 @@ const ProfileScreen = () => {
         <span>
           Dont want to change ? <Link to="/">Home</Link>{" "}
         </span>
+      </div>
+      <div className="mt-14">
+        <UserOrder />
       </div>
     </>
   );
