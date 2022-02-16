@@ -1,4 +1,6 @@
-SHOPIT is a ecommerce application built on MERN stack. Frontend uses pure css and React. Backend is written using express, mongoose and MongoDB.
+SHOPIT is a ecommerce application built on MERN stack. It allows user to buy products,check their order history and also add rating and review. Admin User has the functionality to create new product, delete a existing product , see all of the users order history, delete a user and see his own orders.  
+
+Frontend uses pure css and React. Backend is written using express, mongoose and MongoDB.
 
 git clone "url" will clone the project to your local repository.
 
