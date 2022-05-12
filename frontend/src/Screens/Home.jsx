@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Welcome to Shopit</title>
+        <title>Welcome to Shopit!</title>
       </Helmet>
       <div className="m-8">
         {keyword && (
